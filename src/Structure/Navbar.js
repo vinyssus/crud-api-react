@@ -3,7 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+
   const [currentRoute, setCurrentRoute] = useState();
+
   useEffect(()=>{
     const path = window.location.pathname;
     setCurrentRoute(path.slice(1,path.length))
@@ -16,7 +18,7 @@ function Navbar() {
           <Link
           onClick={() => setCurrentRoute("/")}
             className={
-              currentRoute == ""
+              currentRoute === ""
                 ? "btn btn-info mt-3 ms-2"
                 : "btn btn-secondary mt-3 ms-2"
             }
@@ -29,7 +31,7 @@ function Navbar() {
           <Link
           onClick={() => setCurrentRoute("products")}
             className={
-              currentRoute == "products"
+              currentRoute === "products"
                 ? "btn btn-info mt-3 ms-2"
                 : "btn btn-secondary mt-3 ms-2"
             }
@@ -42,7 +44,7 @@ function Navbar() {
           <Link
           onClick={() => setCurrentRoute('newProduct')}
             className={
-              currentRoute == "newProduct"
+              currentRoute === "newProduct"
                 ? "btn btn-info mt-3 ms-2"
                 : "btn btn-secondary mt-3 ms-2"
             }

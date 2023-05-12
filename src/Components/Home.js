@@ -6,7 +6,7 @@ function Home() {
       <div className="container p-3">
         <div className="card">
           <div className="card-body">
-            <h3>Home Components</h3>
+            <h3 className="text-center">Home</h3>
           </div>
         </div>
       </div>
