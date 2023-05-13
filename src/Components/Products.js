@@ -6,36 +6,40 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { checkProduct, deleteProduct, getProducts } from "../app/context";
 
 function Products() {
   const [products, setProducts] = useState([]);
 
   const handlerDeleteProduct = (product) => {
-    const newProducts = products.filter((p)=> p.id != product.id)
-    setProducts(newProducts);
+    deleteProduct(product).then(resp => {
+      const newProducts = products.filter((p)=> p.id != product.id);
+      setProducts(newProducts);
+    })
   }
 
   useEffect(()=>{
     handlerGetProducts();
-  },[])
+  },[]);
 
   const handlerGetProducts = () => {
-       axios.get("http://localhost:9000/products").then(resp => {
-         const products = resp.data;
-         setProducts(products);
-       }).catch(err => {
-        console.log(err);
-      })
+   getProducts().then(resp => {
+    setProducts(resp.data);
+   }).catch(err => {
+    console.log(err);
+   })
   }
 
  const handlerChecked = (product) => {
-   const newProducts = products.map((p) => {
-    if(p.id == product.id){
-      p.checked = !product.checked;
-    }
-    return p;
-   })
-   setProducts(newProducts);
+    checkProduct(product).then(resp => {
+     const newProducts = products.map((p) => {
+      if(p.id == product.id) {
+        p.checked = !product.checked;
+      }
+      return p;
+     })
+     setProducts(newProducts);
+    })
  }
 
   return (
