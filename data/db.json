@@ -29,6 +29,12 @@
       "name": "mangue",
       "prix": 3000,
       "checked": false
+    },
+    {
+      "name": "ognon",
+      "price": 7500,
+      "checked": "on",
+      "id": 6
     }
   ]
 }

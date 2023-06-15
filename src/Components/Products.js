@@ -4,7 +4,6 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { checkProduct, deleteProduct, getProducts } from "../app/context";
 
@@ -13,7 +12,7 @@ function Products() {
 
   const handlerDeleteProduct = (product) => {
     deleteProduct(product).then(resp => {
-      const newProducts = products.filter((p)=> p.id != product.id);
+      const newProducts = products.filter((p)=> p.id !== product.id);
       setProducts(newProducts);
     })
   }
@@ -33,7 +32,7 @@ function Products() {
  const handlerChecked = (product) => {
     checkProduct(product).then(resp => {
      const newProducts = products.map((p) => {
-      if(p.id == product.id) {
+      if(p.id === product.id) {
         p.checked = !product.checked;
       }
       return p;

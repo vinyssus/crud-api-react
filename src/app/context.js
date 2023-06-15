@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const productApi = axios.create({
-    baseURL : "http://localhost:9000"
+    baseURL : "http://localhost:3000"
 }) 
 
 export const getProducts = () => {
