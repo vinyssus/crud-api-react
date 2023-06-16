@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import {saveProduct} from "../app/context"
+import { saveProduct } from "../app/context";
 
 function NewProduct() {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [prix, setPrix] = useState(0);
   const [checked, setChecked] = useState(false);
 
   const handlerSaveProduct = (event) => {
     event.preventDefault();
     let product = {
-      name: name,
-      price: parseInt(price),
-      checked : checked
+      name,
+      prix,
+      checked,
     };
-    saveProduct(product).then(resp=>{
+    saveProduct(product).then((resp) => {
       alert(JSON.stringify(resp.data));
     });
-  }
+  };
 
   return (
     <>
@@ -42,16 +42,18 @@ function NewProduct() {
                   <div className="mb-3">
                     <label className="form-label">Price :</label>
                     <input
-                      onChange={(e) => setPrice(e.target.value)}
-                      value={price}
+                      onChange={(e) => setPrix(e.target.value)}
+                      value={prix}
                       className="form-control"
                     ></input>
                   </div>
                   <div class="form-check">
-                    <input 
-                     onChange={(e) => setChecked(e.target.value)}
-                     checked = {checked}
-                    class="form-check-input" type="checkbox" />
+                    <input
+                      onChange={(e) => setChecked(e.target.value)}
+                      checked={checked}
+                      class="form-check-input"
+                      type="checkbox"
+                    />
                     <label class="form-check-label" for="flexCheckChecked">
                       Checked
                     </label>

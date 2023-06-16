@@ -22,7 +22,7 @@ function Products() {
   },[]);
 
   const handlerGetProducts = () => {
-   getProducts().then(resp => {
+   getProducts().then((resp) => {
     setProducts(resp.data);
    }).catch(err => {
     console.log(err);
